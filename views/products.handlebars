@@ -1,0 +1,45 @@
+<div id="proPage">
+<div id="cateBtn">
+
+       <div class="cateB">
+               <form action="/products" method="POST">
+               <input value="all" name="category" type="hidden">
+               <button class="proCatBtn" type="submit" >All</button>
+               </form>
+       </div>
+       {{#each cateDate}}
+
+       <div class="cateB">
+               <form action="/products" method="POST">
+               <input value="{{this.category}}" name="category" type="hidden">
+               <button class="proCatBtn" type="submit">{{this.category}}</button>
+               </form>
+       </div>
+        {{/each}}
+</div>
+
+
+
+
+</div>    
+<h2 id="pTitle">Products of {{category}}</h2>
+<div id="pList">
+    {{#each data}}
+    <div class="product">
+        <div class="pImg">
+            <img src="/img/{{this.pic}}" width="240px" height="320px" alt="{{this.title}}" />
+        </div>
+    <div class="pName">{{this.title}}</div>
+    <div>$ {{this.price}} / {{this.unit}}</div>
+    <div class="oForm">
+    <form action="/success" method="POST">
+    <input value="{{this.id}}" name="order" type="hidden">
+    <input value="{{this.title}}" name="oName" type="hidden">
+    <input class="obtn" type="submit" value="ORDER">
+    </form>
+    </div>
+    </div>
+
+    {{/each}}
+</div>
+</div>

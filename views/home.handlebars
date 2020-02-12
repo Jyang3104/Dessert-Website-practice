@@ -1,0 +1,49 @@
+<div id="promo">
+    <img src="/img/promo.jpg" height="200px" alt="promotion">
+    <h1>ENTIRE STORE 25% OFF!</h1>
+</div>
+
+
+
+<div id="cat">
+   <div class="box">
+
+
+       {{#each categoryData}}
+       <div class="cate">
+           <div id="{{this.id}}">
+               <form action="/products" method="POST" class="catForm">
+               <input value="{{this.category}}" name="category" type="hidden">
+               <button type="submit" style="border: 0; background: transparent">
+                <img src="/img/{{this.pic}}" width="240px" height="320px" alt="{{this.category}}" />
+                </button>
+               </form>
+           </div>
+           <h4>{{this.category}}</h4>
+       </div>
+       {{/each}}
+   </div></div>
+
+</div>
+
+
+<div id="best">
+<h3>Best Sellers</h3>   
+<div id="showBest"> 
+{{#each bestData}}
+<div clss="bPro">
+           <div class="bestP">
+               <form action="/products" method="POST" class="bestForm">
+               <input value="all" name="category" type="hidden">
+               <button type="submit" style="border: 0; background:transparent">
+               <img src="/img/{{this.pic}}" width="210px" height="280px" style="background:white" alt="{{this.title}}" />
+               </button>
+               </form></div>
+           <h5>{{this.title}}</h5>
+       </div>
+
+{{/each}}
+</div>
+
+</div>
+

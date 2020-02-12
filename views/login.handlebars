@@ -1,0 +1,28 @@
+
+
+
+
+<form class="form" action="/login" method="POST">
+<fieldset class="fd">
+     <legend>Please Login</legend>
+
+{{#each error}}
+
+<div class="err">*ERROR:{{this}}</div>
+
+{{/each}}
+
+
+<label for="Email">EMAIL</label>
+<input id="Email" name="Email" type="email" placeholder="Email" size=70>
+
+<label for="pwd">PASSWORD</label>
+<input id="pwd" name="pwd" type="password" placeholder="Password" size=70>
+
+<div id="button">
+<input class="btn" type="submit" value="LOGIN">
+<button class="btn"><a href="/signup">SIGNUP</a></button> 
+    
+</div>
+</fieldset>
+ </form>

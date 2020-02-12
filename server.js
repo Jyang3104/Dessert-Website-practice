@@ -126,7 +126,8 @@ app.post("/signup", (req,res)=>{
         message:"You have ordered: "+req.body.oName   
     })
  });
-app.listen(3000,()=>{
+ const PORT=process.env.PORT || 3000
+app.listen(PORT,()=>{
 
   console.log("running server");
 

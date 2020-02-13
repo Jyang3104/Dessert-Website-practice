@@ -129,7 +129,7 @@ footer{
     font-weight:bolder;
     font-family: "Cinzel", serif;
     font-size: 2.4em;
-    color: rgb(0, 121, 80);
+    color: rgb(3, 156, 105);
     position: sticky;
     position: -webkit-sticky;
     margin:13% 25%;
@@ -270,7 +270,8 @@ width:240px;
 .product{
     text-align: center;
 	display: table-cell;
-	vertical-align: middle;
+    vertical-align: middle;
+    font-family: "Cinzel", serif;
     padding:10px;
     border: 0.5px dotted rgba(221, 214, 214, 0.5);
 }

@@ -117,7 +117,7 @@ const product={
         pic:"mapIce.jpg",
         cate:"icecream",
         unit:"scoop",
-        best:1,
+        best:0,
         price:4.99
     });
     this.fakeDB.push({  
@@ -153,7 +153,7 @@ const product={
         pic:"mikTea.jpg",
         cate:"drink",
         unit:"cup",
-        best:1,
+        best:0,
         price:3.99
     });
     this.fakeDB.push({  
@@ -171,7 +171,7 @@ const product={
         pic:"mulCak.jpg",
         cate:"cake",
         unit:"8 inch",
-        best:1,
+        best:0,
         price:26.99
     });
     this.fakeDB.push({  

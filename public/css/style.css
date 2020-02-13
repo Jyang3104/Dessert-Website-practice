@@ -74,20 +74,21 @@ footer{
 .form {
     background: rgba(243, 243, 245, 0.9);
     position: static;
-    width: 50%;
+    width: 680px;
     margin: 5% 25%;
     box-shadow: 3px 3px 8px #a0a1a7;
     font-family: "Cinzel", serif;
     font-size: 1em;
-    padding:2em;
+    padding:17px;
     
 }
 .fd {
-    width: 90%;
+    width: 612px;
     display: flex;
     flex-direction: column;
     border-radius: 2px;
     overflow: auto;
+    margin:17px;
 
 }
 .fd>legend{
@@ -110,7 +111,7 @@ footer{
 }
 .btn{
     width:30%;
-    height:20%;
+    height:30%;
     margin:1em;
     border: 0.5px solid rgb(48, 48, 48);
     border-radius: 4px;
@@ -170,7 +171,7 @@ footer{
 #cat{
     height:450px;
     width:85%;
-    margin:2em 0 2em 10em;
+    margin:6em 0 2em 6em;
     background-color: rgba(221, 214, 214, 0.7);
 }
 
@@ -264,7 +265,7 @@ width:240px;
     width:90%;
     margin:5%;
     padding:0;
-    background-color: rgba(221, 214, 214, 0.7);
+    background-color: rgba(245, 243, 243, 0.9);
 }
 
 .product{

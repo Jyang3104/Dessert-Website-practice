@@ -1,0 +1,42 @@
+[33mcommit 1c121a036017999f75549ec7f1cd73c471f1a527[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 54e99a7 963ae25
+Author: Jyang3104 <59581237+Jyang3104@users.noreply.github.com>
+Date:   Wed Feb 12 20:38:19 2020 -0500
+
+    Merge branch 'master' of https://github.com/Jyang3104/Dessert-Website-practice
+
+[33mcommit 54e99a79e51f79c9b605f50063a3a4d7d88a5129[m
+Author: Jyang3104 <59581237+Jyang3104@users.noreply.github.com>
+Date:   Wed Feb 12 20:17:45 2020 -0500
+
+    change form css to make the size not changeable
+
+[33mcommit 0a5c06864c9fc30e63f536495b4d5a9725c555f1[m
+Author: Jyang3104 <59581237+Jyang3104@users.noreply.github.com>
+Date:   Wed Feb 12 19:00:19 2020 -0500
+
+    Change font-size/change best sellers
+
+[33mcommit 963ae251a74df8e11de2dddec1bea4e75175a1d6[m
+Author: Jyang3104 <jyang3104@yahoo.com>
+Date:   Wed Feb 12 09:55:50 2020 -0500
+
+    Update README.md
+
+[33mcommit f843ef301c92982db30f1201ea7dcc2aa5e2e444[m
+Author: Jyang3104 <jyang3104@yahoo.com>
+Date:   Wed Feb 12 09:55:06 2020 -0500
+
+    Create README.md
+
+[33mcommit b4b463eabbe08859819a1f5ff4f190142be1aea4[m
+Author: Jyang3104 <59581237+Jyang3104@users.noreply.github.com>
+Date:   Wed Feb 12 09:02:48 2020 -0500
+
+    change port for production environment
+
+[33mcommit ff8c179943ee1841385d2fb994929de018753437[m
+Author: Jyang3104 <59581237+Jyang3104@users.noreply.github.com>
+Date:   Tue Feb 11 21:30:49 2020 -0500
+
+    Devide the fake data into 3 js file(catrgory,products,best seller)

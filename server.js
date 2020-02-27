@@ -83,27 +83,53 @@ app.get("/signup", (req,res)=>{
 
 app.post("/signup", (req,res)=>{
     //validate user date
-    const errMessage=[];
+    const errMessage={};
+    const okValue={};
+    let errFlag=true;
+    const regularExpression  = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,16})/;
+    const emailReg=/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/;
   if(req.body.name==""){
  
-        errMessage.push("Please enter Your Name.");
+        errMessage.name="*Please enter your name*";
+        errFlag=false;
+    }else{
+        okValue.name=req.body.name;
     }
+
   if(req.body.Email==""){
  
-     errMessage.push("Please enter Your Email.");
+     errMessage.email="*Please enter your email*";
+     errFlag=false;
+  }else if(!emailReg.test(req.body.Email.toUpperCase())){
+     errMessage.email="*Not valid email address*"
+     errFlag=false;
+  }else{
+      okValue.email=req.body.Email;
   }
  
   if(req.body.pwd==""){
-  errMessage.push("Please enter password.");}
+  errMessage.pwd="*Please enter password*";
+  errFlag=false;
+}else if(!regularExpression.test(req.body.pwd)){
+    errMessage.pwd="*Password must have 8-16 characters, and contain number, letter and special character.*";
+    errFlag=false;
+}
  
   if(req.body.pwd!=req.body.pwd2){
-      errMessage.push("Password Does Not Match.")
+      errMessage.repwd="*Password Does Not Match.*";
+      errFlag=false;
+  }else{
+    okValue.pwd=req.body.pwd;
   }
-  if(errMessage.length>0){
+  if(!errFlag){
  
      res.render("signup",{
          title:"SignUp",
-         error:errMessage
+         errName:errMessage.name,
+         errEmail:errMessage.email,
+         errPwd:errMessage.pwd,
+         errRepwd:errMessage.repwd,
+         value:okValue
      })
   }else{
       console.log(`Name:${req.body.name}`);

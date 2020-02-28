@@ -32,7 +32,7 @@
     <div class="pName">{{this.title}}</div>
     <div>$ {{this.price}} / {{this.unit}}</div>
     <div class="oForm">
-    <form action="/success" method="POST">
+    <form action="/products/success" method="POST">
     <input value="{{this.id}}" name="order" type="hidden">
     <input value="{{this.title}}" name="oName" type="hidden">
     <input class="obtn" type="submit" value="ORDER">

@@ -3,6 +3,8 @@ const app= exp();
 const exphbs  = require('express-handlebars');
 const bodyParser=require('body-parser');
 
+//load environment variable file
+require('dotenv').config({path:"./config/keys.env"});
 
 
 //let express use handlebars engine
@@ -20,12 +22,13 @@ const genController=require("./controllers/general");
 const prodController=require("./controllers/products");
 const signupController=require("./controllers/signup");
 
+
 //map controller
 app.use("/", genController);
 app.use("/products", prodController);
 app.use("/signup", signupController);
 
- const PORT=process.env.PORT || 3000
+ const PORT=process.env.PORT
 app.listen(PORT,()=>{
 
   console.log("running server");

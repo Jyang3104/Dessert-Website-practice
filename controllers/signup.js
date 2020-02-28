@@ -61,13 +61,37 @@ router.post("/", (req,res)=>{
          value:okValue
      })
   }else{
-      console.log(`Name:${req.body.name}`);
-      console.log(`Email:${req.body.Email}`);
-      console.log(`Password:${req.body.pwd}`);
-      res.render("success",{
-         title:"SUCCESS",
-         message:"You have created a new account!"   
-     })
+      
+      
+      const {name, Email, pwd}=req.body;
+      console.log(name,Email,pwd);
+        // using Twilio SendGrid's v3 Node.js Library
+        // https://github.com/sendgrid/sendgrid-nodejs
+        const sgMail = require('@sendgrid/mail');
+        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+        const msg = {
+        to: 'jyang219@myseneca.ca',
+        from: `${Email}`,
+        subject: 'New customer',
+        html: 
+        `<strong>Customer name:${name}</strong>
+        <strong>Customer password:${pwd}</strong>
+        <strong>Email:${Email}</strong>`,
+        };
+        sgMail.send(msg)
+        .then(()=>{
+             res.render("success",{
+                title:"SUCCESS",
+                message:"You have created a new account!"   
+            })
+        })
+        .catch(err=>{
+            console.log(`ERR: ${err}`);
+        })
+
+
+
+      
   }
  
  });

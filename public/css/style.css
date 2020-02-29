@@ -159,7 +159,7 @@ footer{
     text-align: center;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
-    font-size: 250%;
+    font-size: 3em;
     animation-name: promo;
     animation-duration: 8s;
 }
@@ -335,11 +335,17 @@ width:19.5vw;
 #user>#order{
     text-align: end;
 }
+@media screen and (max-device-width: 800px)and (min-device-width: 500px){
+     #promo>h1{ 
+        font-size: 1em;
+    }
+}
 
 @media screen and (max-device-width: 500px) {
     #promo>img{
         display:none;
     }
+   
     nav {
         height: 10vh; 
         padding: 12% 0 0 0;

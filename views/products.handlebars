@@ -18,16 +18,12 @@
         {{/each}}
 </div>
 
-
-
-
-</div>    
 <h2 id="pTitle">Products of {{category}}</h2>
 <div id="pList">
     {{#each data}}
     <div class="product">
         <div class="pImg">
-            <img src="/img/{{this.pic}}" width="240px" height="320px" alt="{{this.title}}" />
+            <img src="/img/{{this.pic}}" width="180vw" alt="{{this.title}}" />
         </div>
     <div class="pName">{{this.title}}</div>
     <div>$ {{this.price}} / {{this.unit}}</div>

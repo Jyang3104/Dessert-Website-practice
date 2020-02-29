@@ -6,18 +6,14 @@
 <fieldset class="fd">
      <legend>Please Login</legend>
 
-{{#each error}}
-
-<div class="err">*ERROR:{{this}}</div>
-
-{{/each}}
-
 
 <label for="Email">EMAIL</label>
-<input id="Email" name="Email" type="email" placeholder="Email" size=70>
+<input id="Email" name="Email" type="email" value="{{ok.email}}" placeholder="Email" >
+<div class="err">{{error.email}}</div>
 
 <label for="pwd">PASSWORD</label>
-<input id="pwd" name="pwd" type="password" placeholder="Password" size=70>
+<input id="pwd" name="pwd" type="password" placeholder="Password" >
+<div class="err">{{error.password}}</div>
 
 <div id="button">
 <input class="btn" type="submit" value="LOGIN">

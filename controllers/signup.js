@@ -16,12 +16,20 @@ router.post("/", (req,res)=>{
     let errFlag=true;
     const regularExpression  = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,16})/;
     const emailReg=/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/;
-  if(req.body.name==""){
+  if(req.body.fname==""){
  
-        errMessage.name="*Please enter your name*";
+        errMessage.fname="*Please enter your first name*";
         errFlag=false;
     }else{
-        okValue.name=req.body.name;
+        okValue.fname=req.body.fname;
+    }
+
+    if(req.body.lname==""){
+ 
+        errMessage.lname="*Please enter your last name*";
+        errFlag=false;
+    }else{
+        okValue.lname=req.body.lname;
     }
 
   if(req.body.Email==""){
@@ -54,17 +62,14 @@ router.post("/", (req,res)=>{
  
      res.render("signup",{
          title:"SignUp",
-         errName:errMessage.name,
-         errEmail:errMessage.email,
-         errPwd:errMessage.pwd,
-         errRepwd:errMessage.repwd,
+         err:errMessage,
          value:okValue
      })
   }else{
       
       
-      const {name, Email, pwd}=req.body;
-      console.log(name,Email,pwd);
+      const {fname,lname, Email, pwd}=req.body;
+      console.log(fname,lname,Email,pwd);
         // using Twilio SendGrid's v3 Node.js Library
         // https://github.com/sendgrid/sendgrid-nodejs
         const sgMail = require('@sendgrid/mail');
@@ -74,7 +79,8 @@ router.post("/", (req,res)=>{
         from: `${Email}`,
         subject: 'New customer',
         html: 
-        `<strong>Customer name:${name}</strong>
+        `<strong>Customer first name:${fname}</strong>
+        <strong>Customer last name:${lname}</strong>
         <strong>Customer password:${pwd}</strong>
         <strong>Email:${Email}</strong>`,
         };
@@ -82,7 +88,7 @@ router.post("/", (req,res)=>{
         .then(()=>{
              res.render("success",{
                 title:"SUCCESS",
-                message:"You have created a new account!"   
+                message:`${fname} ${lname} Welcome to Amami Dessert!`   
             })
         })
         .catch(err=>{

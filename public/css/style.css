@@ -17,7 +17,7 @@ header{
     margin: 0;
     padding: 0;
     top: 0;
-    width: 100%;
+    width: 100vw;
     height: 20vh;
     background-color:#363636;
     display: flex;
@@ -74,21 +74,21 @@ footer{
 .form {
     background: rgba(243, 243, 245, 0.9);
     position: static;
-    width: 680px;
+    width: auto;
     margin: 5% 25%;
     box-shadow: 3px 3px 8px #a0a1a7;
     font-family: "Cinzel", serif;
     font-size: 1em;
-    padding:17px;
+    padding:2.5%;
     
 }
 .fd {
-    width: 612px;
+    width: 90%;
     display: flex;
     flex-direction: column;
     border-radius: 2px;
     overflow: auto;
-    margin:17px;
+    margin:2.5%;
 
 }
 .fd>legend{
@@ -97,7 +97,7 @@ footer{
 .fd>input{
 
     margin:0 2em;
-    padding:12px;
+    padding:1em;
     border: 0.5px solid rgb(48, 48, 48);
     border-radius: 2px;
     
@@ -122,15 +122,14 @@ footer{
 .err{
     color:red;
     font-weight: bold;
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 
 
 .msg{
     font-weight:bolder;
-    font-family: "Cinzel", serif;
     font-size: 2.4em;
-    color: rgb(3, 156, 105);
+    color: rgb(37, 37, 37);
     position: sticky;
     position: -webkit-sticky;
     margin:13% 25%;
@@ -139,7 +138,7 @@ footer{
 }
 
 #promo{
-    height:200px;
+    height:25vh;
     width:100%;
     margin:2em 0;
     background-color: #363636;
@@ -147,16 +146,19 @@ footer{
     flex-direction: row;
 }
 #promo>img{
+    float:left;
     -webkit-mask-image:linear-gradient(0.25turn,#363636, transparent);
     mask-image: linear-gradient(0.25turn,#363636, transparent);
 }
 
+
 #promo>h1{
+    float:right;
     color: white;
     text-align: center;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
-    font-size: 4em;
+    font-size: 250%;
     animation-name: promo;
     animation-duration: 8s;
 }
@@ -169,14 +171,14 @@ footer{
     }
 }
 #cat{
-    height:450px;
-    width:85%;
-    margin:6em 0 2em 6em;
+    height:auto;
+    width:auto;
+    margin:1em;
     background-color: rgba(221, 214, 214, 0.7);
 }
 
 #best{
-    height:450px;
+    height:auto;
     width:100%;
     margin:0;
     background-color: rgba(221, 214, 214, 0.7);
@@ -195,10 +197,14 @@ footer{
     text-align: center;   
 }
 
+.bPro{
+    height:24vw;
+    width:18vw;
+}
 .box{
     padding: 2em;
     display:flex;
-    flex-direction: row;
+    flex-direction:row;
     justify-content: space-evenly;
     font-family: "Cinzel", serif;
     text-align: center;
@@ -211,8 +217,8 @@ footer{
 
 
 #cak, #cho, #ice, #dri{
-    height:320px;
-    width:240px;
+    height:26vw;
+    width:19.5vw;
     padding:0;
     background-color: rgba(255,255,255, 0.9);
 }
@@ -220,8 +226,8 @@ footer{
 .catForm{
 margin:0;
 padding: 0;
-height:320px;
-width:240px;
+height:26vw;
+width:19.5vw;
 }
 
 .catForm>button{
@@ -236,7 +242,7 @@ width:240px;
 
 #proPage{
     display:grid;
-    grid-template-rows: 15% 10% 85%;
+    grid-template-rows: 12% 3% 85%;
 }
 
 #cateBtn{
@@ -306,7 +312,67 @@ width:240px;
     -webkit-mask-image:linear-gradient(white, rgba(255, 255, 255, 0.4));
 }
 
+#sucMain{
+    background: rgba(243, 243, 245, 0.9);
+    position: static;
+    width: auto;
+    margin: 5% 25%;
+    box-shadow: 3px 3px 8px #a0a1a7;
+    font-family: "Cinzel", serif;
+    font-size: 1em;
+    padding:2.5%;
+}
 
+@media screen and (max-device-width: 500px) {
+    #promo>img{
+        display:none;
+    }
+    nav {
+        height: 10vh; 
+        padding: 12% 0 0 0;
+    }
+    nav>a{
+        margin:0.5em;
+        font-size: 0.8em; 
+    }
+
+    
+
+    #proPage{
+        display:grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-rows: repeat(20,1fr);
+    }
+    #cateBtn{
+        grid-column: 1/2;
+        grid-row: 1/6;
+        display: flex;
+        flex-direction:column;
+    }
+    #pTitle{
+        grid-column: 2/4;
+        grid-row: 1/2;
+    }
+    #pList{
+        grid-column: 2/4;
+        grid-row: 2/21;
+        
+        display:grid;
+        grid-template-columns: 90%;
+        width:90%;
+        margin:5%;
+        padding:0;
+        background-color: rgba(245, 243, 243, 0.9);
+    }
+
+    .form {   
+        margin: 5% 10%;     
+    }
+
+    #sucMain{
+        margin: 5% 10%;
+    }
+}
 
 
 

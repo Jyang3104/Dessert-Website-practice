@@ -27,27 +27,34 @@ router.get("/", (req,res)=>{
 //get login information and validate
 router.post("/login", (req,res)=>{
     //validate user date
-    const errMessage=[];
+    const errMessage={};
+    let errFlag=true;
+    const okValue={};
   if(req.body.Email==""){
- 
-     errMessage.push("Please enter Your Email.");
+    errFlag=false;
+     errMessage.email="*Please enter your email";
+  }else{
+      okValue.email=req.body.Email;
   }
  
   if(req.body.pwd==""){
-  errMessage.push("Please enter password.");}
+    errMessage.password="*Please enter your password";
+    errFlag=false;
+}
  
-  if(errMessage.length>0){
+  if(!errFlag){
  
      res.render("login",{
          title:"LOGIN",
-         error:errMessage
+         error:errMessage,
+         ok:okValue
      })
   }else{
       console.log(`Email:${req.body.Email}`);
       console.log(`Password:${req.body.pwd}`);
       res.render("success",{
          title:"SUCCESS",
-         message:"You have logged in successfuly!"   
+         message:"Welcome back!"   
      })
   }
  

@@ -180,7 +180,7 @@ const product={
         pic:"redCak.jpg",
         cate:"cake",
         unit:"8 inch",
-        best:0,
+        best:1,
         price:23.99
     });
     this.fakeDB.push({  
@@ -189,7 +189,7 @@ const product={
         pic:"truCho.jpg",
         cate:"chocolate",
         unit:"100g",
-        best:1,
+        best:0,
         price:9.99
     });
     this.fakeDB.push({  

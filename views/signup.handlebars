@@ -5,21 +5,25 @@
      <legend>Please Signup</legend>
 
 
-<label for="name">Your Name</label>
-<input id="name" name="name" type="text" value="{{value.name}}" placeholder="Please Enter Your Name" maxlength="25" size="70">
-<div class="err">{{errName}}</div>
+<label for="fname">Your  First Name</label>
+<input id="fname" name="fname" type="text" value="{{value.fname}}" placeholder="Please Enter Your First Name" maxlength="25">
+<div class="err">{{err.fname}}</div>
+
+<label for="lname">Your Last Name</label>
+<input id="lname" name="lname" type="text" value="{{value.lname}}" placeholder="Please Enter Your Last Name" maxlength="25">
+<div class="err">{{err.lname}}</div>
 
 <label for="Email">Your Email</label>
-<input id="Email" name="Email" type="text" value="{{value.email}}" placeholder="Please Enter Your Email" maxlength="25" size="70">
-<div class="err">{{errEmail}}</div>
+<input id="Email" name="Email" type="text" value="{{value.email}}" placeholder="Please Enter Your Email" maxlength="25">
+<div class="err">{{err.email}}</div>
 
 <label for="pwd">Password</label>
-<input id="pwd" name="pwd" type="password" value="{{value.pwd}}"  placeholder="Please Enter Your Password" maxlength="25" size="70">
-<div class="err">{{errPwd}}</div>
+<input id="pwd" name="pwd" type="password" value="{{value.pwd}}"  placeholder="Please Enter Your Password" maxlength="25">
+<div class="err">{{err.pwd}}</div>
 
 <label for="pwd2">Confirm Password</label>
-<input id="pwd2" name="pwd2" type="password" value="{{value.pwd}}" placeholder="Please Enter Your Password Again" maxlength="25" size="70">
-<div class="err">{{errRepwd}}</div>
+<input id="pwd2" name="pwd2" type="password" value="{{value.pwd}}" placeholder="Please Enter Your Password Again" maxlength="25">
+<div class="err">{{err.repwd}}</div>
 
 <div id="button">
 <input class="btn" type="submit" value="SIGNUP">    

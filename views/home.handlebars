@@ -1,5 +1,5 @@
 <div id="promo">
-    <img src="/img/promo.jpg" height="200px" alt="promotion">
+    <img src="/img/promo.jpg" height="100%" alt="promotion">
     <h1>ENTIRE STORE 25% OFF!</h1>
 </div>
 
@@ -15,7 +15,7 @@
                <form action="/products" method="POST" class="catForm">
                <input value="{{this.category}}" name="category" type="hidden">
                <button type="submit" style="border: 0; background: transparent">
-                <img src="/img/{{this.pic}}" width="240px" height="320px" alt="{{this.category}}" />
+                <img src="/img/{{this.pic}}" width="100%" alt="{{this.category}}" />
                 </button>
                </form>
            </div>
@@ -36,7 +36,7 @@
                <form action="/products" method="POST" class="bestForm">
                <input value="all" name="category" type="hidden">
                <button type="submit" style="border: 0; background:transparent">
-               <img src="/img/{{this.pic}}" width="210px" height="280px" style="background:white" alt="{{this.title}}" />
+               <img src="/img/{{this.pic}}" width="180vw" style="background:white" alt="{{this.title}}" />
                </button>
                </form></div>
            <h5>{{this.title}}</h5>

@@ -54,7 +54,7 @@ router.post("/", (req,res)=>{
   if(req.body.pwd!=req.body.pwd2){
       errMessage.repwd="*Password Does Not Match.*";
       errFlag=false;
-  }else{
+  }else if(regularExpression.test(req.body.pwd)){
     okValue.pwd=req.body.pwd;
   }
   

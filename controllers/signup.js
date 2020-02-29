@@ -88,7 +88,8 @@ router.post("/", (req,res)=>{
         .then(()=>{
              res.render("success",{
                 title:"SUCCESS",
-                message:`${fname} ${lname} Welcome to Amami Dessert!`   
+                message:`${fname} ${lname} Welcome to Amami Dessert!`,
+                name: `${fname} ${lname}`  
             })
         })
         .catch(err=>{

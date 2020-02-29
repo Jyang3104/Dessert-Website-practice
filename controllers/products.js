@@ -27,7 +27,8 @@ router.post("/success", (req,res)=>{
     console.log(req.body.oName);
     res.render("success",{
         title:"SUCCESS",
-        message:"You have ordered: "+req.body.oName   
+        message:"You have ordered: "+req.body.oName,
+        qty:1   
     });
  });
 

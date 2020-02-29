@@ -323,6 +323,18 @@ width:19.5vw;
     font-size: 1em;
     padding:2.5%;
 }
+#user{
+    margin: 0.5em 0;
+    background-color:#363636;
+    color:rgb(235, 235, 235);
+    font-family: "Cinzel", serif;
+    font-size: small;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+#user>#order{
+    text-align: end;
+}
 
 @media screen and (max-device-width: 500px) {
     #promo>img{

@@ -211,7 +211,7 @@ footer{
     text-align: center;
 }
 
-.cate,h1{
+.cate,h4{
     font-family: "Cinzel", serif;
     text-align: center;   
 }
@@ -390,6 +390,11 @@ width:19.5vw;
 
     #sucMain{
         margin: 5% 10%;
+    }
+
+    .cate,h4{
+        font-size: smaller; 
+        margin: 1%;
     }
 }
 

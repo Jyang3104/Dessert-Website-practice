@@ -28,8 +28,8 @@ app.use("/", genController);
 app.use("/products", prodController);
 app.use("/signup", signupController);
 
- const PORT=process.env.PORT
-app.listen(PORT,()=>{
+ const PORT=process.env.PORT;
+ app.listen(PORT,()=>{
 
   console.log("running server");
 

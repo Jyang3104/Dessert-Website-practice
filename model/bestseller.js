@@ -1,4 +1,4 @@
-const product={
+/*const product={
     fakeDB:[],
 
     newDB(){
@@ -244,3 +244,4 @@ module.exports=product;
 
 
 
+*/

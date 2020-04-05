@@ -2,6 +2,7 @@ const exp=require("express");
 const app= exp();
 const exphbs  = require('express-handlebars');
 const bodyParser=require('body-parser');
+const mongoose = require('mongoose');
 
 //load environment variable file
 require('dotenv').config({path:"./config/keys.env"});
@@ -22,7 +23,11 @@ const genController=require("./controllers/general");
 const prodController=require("./controllers/products");
 const signupController=require("./controllers/signup");
 
-
+mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(()=>{
+    console.log(`Connected to mongoDB`);
+})
+.catch(err=>console.log(`ERROR: ${err}`));
 //map controller
 app.use("/", genController);
 app.use("/products", prodController);

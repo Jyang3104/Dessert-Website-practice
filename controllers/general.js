@@ -1,16 +1,50 @@
 const express=require('express');
 const router=express.Router();
-
-const modelBest=require("../model/bestseller");
-const modelCate=require("../model/category"); 
+const cateModel=require("../model/category"); 
+const proModel=require("../model/product");
 
 //home page
 router.get("/", (req,res)=>{
-    res.render("home",{
+
+    cateModel.find()
+    .then((cates)=>{
+        console.log(cates[1].id);
+        const filterCate=cates.map(cate=>{
+            return {
+                category:cate.category,
+                id:cate.id,
+                pic:cate.pic
+            }
+        })
+         
+        proModel.find({best:true})
+        .then((bestPro)=>{
+        console.log(bestPro[2].id);
+        const filterPro=bestPro.map(bestP=>{
+            return{
+                title:bestP.title,
+                id:bestP.id,
+                pic:bestP.pic,
+                cate:bestP.cat,
+                unit:bestP.unit,
+                best:bestP.best,
+                price:bestP.price
+            }
+        })
+
+        res.render("home",{
         title:"Home",
-        bestData:modelBest.getBestPro(),
-        categoryData:modelCate.getAllCate()
-    });
+        bestData:filterPro,
+        categoryData:filterCate
+        })
+      })
+      .catch(err=>console.log(`ERROR PRODUCT: ${err}`))
+    })
+    .catch(err=>console.log(`ERROR CATEGORY: ${err}`))
+
+    
+
+
  });
  
  //login page
@@ -60,5 +94,5 @@ router.post("/login", (req,res)=>{
  
  });
 
-
+ 
  module.exports=router;

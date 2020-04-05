@@ -10,7 +10,7 @@
                <button class="proCatBtn" type="submit" >All</button>
                </form>
        </div>
-       {{#each cateDate}}
+       {{#each cateData}}
 
        <div class="cateB">
                <form action="/products" method="POST">
@@ -31,8 +31,8 @@
     <div class="pName">{{this.title}}</div>
     <div>$ {{this.price}} / {{this.unit}}</div>
     <div class="oForm">
-    <form action="/products/success" method="POST">
-    <input value="{{this.id}}" name="order" type="hidden">
+    <form action="/products/order" method="POST">
+    <input value="{{this.price}}" name="oPrice" type="hidden">
     <input value="{{this.title}}" name="oName" type="hidden">
     <input class="obtn" type="submit" value="ORDER">
     </form>

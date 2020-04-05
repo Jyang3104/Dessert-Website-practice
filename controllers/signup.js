@@ -1,7 +1,8 @@
 const express=require('express');
 const router=express.Router();
+const cusModel=require("../model/signup");
 
- //go to sinup page
+ //go to signup page
  router.get("/", (req,res)=>{
     res.render("signup",{
         title:"SignUp"   
@@ -86,14 +87,27 @@ router.post("/", (req,res)=>{
         };
         sgMail.send(msg)
         .then(()=>{
-             res.render("success",{
+            const newCustomer={
+                firstName:fname,
+                lastName:lname,
+                email:Email,
+                password:pwd
+            };
+             
+         const customer = new cusModel(newCustomer);
+         customer.save()
+         .then(()=>{
+
+            res.render("success",{
                 title:"SUCCESS",
                 message:`${fname} ${lname} Welcome to Amami Dessert!`,
                 name: `${fname} ${lname}`  
             })
+         })
+         .catch(err=>console.log(`ERROR insert DB:${err}`));     
         })
         .catch(err=>{
-            console.log(`ERR: ${err}`);
+            console.log(`ERR send email: ${err}`);
         })
 
 

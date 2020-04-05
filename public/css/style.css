@@ -32,14 +32,16 @@ nav {
     margin: 0;
     padding: 0;
     top: 0;
-    width: 100%;
+    width: 85%;
     height: 10vh;
     background-color:#363636;
     display: flex;
     flex-direction:row;
     justify-content:center;
 }
-
+#cart{
+    margin-top: 1.2em;
+}
 nav>a{
     margin:1.5em;
     text-decoration: none;

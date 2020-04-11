@@ -12,6 +12,10 @@ const cusModel=require("../model/signup");
  //get register data and validate
 router.post("/", (req,res)=>{
     //validate user date
+  
+   cusModel.findOne({email:req.body.Email})
+   .then((cus)=>{
+    
     const errMessage={};
     const okValue={};
     let errFlag=true;
@@ -34,12 +38,14 @@ router.post("/", (req,res)=>{
     }
 
   if(req.body.Email==""){
- 
      errMessage.email="*Please enter your email*";
      errFlag=false;
   }else if(!emailReg.test(req.body.Email.toUpperCase())){
-     errMessage.email="*Not valid email address*"
+     errMessage.email="*Not valid email address*";
      errFlag=false;
+  }else if(cus!=null){
+    errMessage.email="*Account already exists*";
+    errFlag=false;
   }else{
       okValue.email=req.body.Email;
   }
@@ -108,13 +114,17 @@ router.post("/", (req,res)=>{
         })
         .catch(err=>{
             console.log(`ERR send email: ${err}`);
-        })
-
-
-
-      
+        })    
   }
+       
+   })
+   .catch(err=>console.log(`ERR  CK EXIST ACCOUNT ${err}`))
+
+
+/*
+    
  
+  */
  });
 
  module.exports=router;

@@ -24,11 +24,34 @@
                   <a href="/">HOME</a>
                   <a href="/login">LOGIN</a>
                   <a href="/signup">SIGNUP</a>
-             
+                  <div class="dropdown">
+                  <div id="open-menu">BROWSE</div>
+                  <div class="dropdown-content">
+                      <p><form action="/products" method="POST" >
+                      <input value="chocolate" name="category" type="hidden">
+                      <button type="submit" class="ddbtn">CHOCOLATE</button>
+                      </form></p>
+                      <p><form action="/products" method="POST" >
+                      <input value="drink" name="category" type="hidden">
+                      <button type="submit" class="ddbtn">DRINK</button>
+                      </form></p>
+                      <p><form action="/products" method="POST" >
+                      <input value="cake" name="category" type="hidden">
+                      <button type="submit" class="ddbtn">CAKE</button>
+                      </form></p>
+                      <p><form action="/products" method="POST" >
+                      <input value="icecream" name="category" type="hidden">
+                      <button type="submit" class="ddbtn">ICE CREAM</button>
+                      </form></p>
+                      <p><a href="/clerk/dash" class="ddbtn">CLERK</a> </p>
+                  </div>
+                  </div>
+
           </nav>
           <a id="cart" href="/products/checkout">
           <img id="cart" src="/img/cart.png" alt="cart" width="30vw"/>
           </a>
+
           
       </header>
 

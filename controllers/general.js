@@ -8,7 +8,7 @@ router.get("/", (req,res)=>{
 
     cateModel.find()
     .then((cates)=>{
-        console.log(cates[1].id);
+    
         const filterCate=cates.map(cate=>{
             return {
                 category:cate.category,
@@ -19,9 +19,10 @@ router.get("/", (req,res)=>{
          
         proModel.find({best:true})
         .then((bestPro)=>{
-        console.log(bestPro[2].id);
+       
         const filterPro=bestPro.map(bestP=>{
             return{
+                mId:bestP._id,
                 title:bestP.title,
                 id:bestP.id,
                 pic:bestP.pic,
@@ -31,7 +32,7 @@ router.get("/", (req,res)=>{
                 price:bestP.price
             }
         })
-
+         
         res.render("home",{
         title:"Home",
         bestData:filterPro,

@@ -1,0 +1,17 @@
+<div class="productD">
+        <div class="imgD">
+            <img src="/img/{{pic}}" width="210vw" alt="{{title}}" />
+        </div>
+    <div class="pDetail">   
+    <div class="pName">{{title}}</div>
+    <div>$ {{price}} / {{unit}}</div>
+    <div class="oForm">
+    <form action="/products/order?method=PUT" method="POST">
+    <input value="{{price}}" name="oPrice" type="hidden">
+    <input value="{{title}}" name="oName" type="hidden">
+    <input value="kishi" name="customer" type="hidden">
+    <input class="obtn" type="submit" value="ORDER">
+    </form>
+    </div>
+    </div>
+    </div> 

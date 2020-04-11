@@ -28,6 +28,7 @@ router.post("/", (req,res)=>{
 
                 const filterPro=pros.map(pro=>{
                     return{
+                        mId:pro._id,
                         title:pro.title,
                         id:pro.id,
                         pic:pro.pic,
@@ -52,6 +53,7 @@ router.post("/", (req,res)=>{
         .then((proCs)=>{
             const filterProC=proCs.map(pro=>{
                 return{
+                    mId:pro._id,
                     title:pro.title,
                     id:pro.id,
                     pic:pro.pic,
@@ -77,35 +79,37 @@ router.post("/", (req,res)=>{
 });
 
 //store the customer's choice into mongoDB
-router.post("/order", (req,res)=>{
+router.put("/order", (req,res)=>{
 
-    console.log(req.body.oPrice);
-    console.log(req.body.oName);
-    const addItem={
-        products:[]
-    };
-    addItem.products.push({
+    orderModel.findOne({
+        $and:
+         [{customer:req.body.customer},
+          {isfinished:false}]})
+        .then(order=>{
+        const newOrder={
+            products:order.products
+        };
+        newOrder.products.push({
         name : req.body.oName,
         price : req.body.oPrice
-    });
-    
-    const order = new orderModel(addItem);
-    order.save()
-    .then(()=>{
-    // render to products page, continue shopping
-    cateModel.find()
-    .then((cates)=>{
-        const filterCate=cates.map(cate=>{
-            return {
+       }) 
+
+        orderModel.updateOne({_id:order._id},newOrder)
+        .then(()=>{
+              cateModel.find()
+              .then((cates)=>{
+             const filterCate=cates.map(cate=>{
+                return {
                 category:cate.category,
                 id:cate.id,
                 pic:cate.pic
-            }
-        })
-            proModel.find()
-            .then((pros)=>{
+                }
+            })
+              proModel.find()
+              .then((pros)=>{
                 const filterPro=pros.map(pro=>{
                     return{
+                        mId:pro._id,
                         title:pro.title,
                         id:pro.id,
                         pic:pro.pic,
@@ -126,32 +130,78 @@ router.post("/order", (req,res)=>{
       
     })
     .catch(err=>console.log(`ERROR AFTER ORDER,CATEGORY: ${err}`))
+       })
+       .catch(err=>console.log(`ERR UPDATE ONE: ${err}`))
     })
-    .catch(err=>console.log(`ERROR SAVE ORDER: ${err}`));    
+
+    .catch(err=>console.log(`ERR FIND TO UPDATE: ${err}`))
+
+
+
+    
+  
+    
+      
  });
 
+ //do to detail page
+ router.get("/detail/:mId", (req,res)=>{
+    proModel.findById(req.params.mId)
+    .then((pro)=>{
+     
+        const {title,id,pic,cate,unit,best,price}=pro;
+
+    res.render("detail",{
+        title,
+        id,
+        pic,
+        cate,
+        unit,
+        best,
+        price
+        });
+    })
+    .catch(err=>console.log(`ERR DETAIL: ${err}`))
+ });
+
+
+
+
+
+ //click cart icon 
  router.get("/checkout", (req,res)=>{
 
-    orderModel.find({isfinished:false})
-    .then((orders)=>{
+    orderModel.findOne({
+        $and:
+         [{customer:"kishi"},
+          {isfinished:false}]})
+    .then((order)=>{
      
-     const filterOrder=orders.map(order=>{
-         return {
-             name:order.products[0].name,
-             price:order.products[0].price  
-         }
-     });
-
+     const {customer,date,products}=order;
+     const filterPros=products.map(pro=>{
+         return{
+         name:pro.name,
+         price:pro.price
+        }
+     })
      //use moment to format date, not change origin date, using in one line
-     console.log(moment(orders[0].date).format('YYYY/MM/DD'));
-
+     console.log(moment(order.date).format('YYYY/MM/DD'));
+     let total=0.00;
+     products.forEach(element => {
+         total=total+element.price;
+     });
      res.render("checkout",{
          massege:"Your shopping cart!",
-         data:filterOrder
+         customer,
+         date:moment(date).format('YYYY/MM/DD'),
+         products:filterPros,
+         total: Math.round(total*100)/100
      });
     })
     .catch(err=>console.log(`ERROR order: ${err}`))
      
   });
+
+  
 
 module.exports=router;

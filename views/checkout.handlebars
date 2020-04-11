@@ -1,7 +1,10 @@
 <h1>{{massege}}</h1>
-{{#each data}}
+<h2>{{date}}</h2>
+<h2>{{customer}}: PRODUCTS IN YOUR SHOPPING CART</h2>
+{{#each products}}
   
-<div>{{this.name}}</div>
-<div>{{this.price}}</div>
+<div>You ordered:{{this.name}}, and the price is ${{this.price}}</div>
+
   
 {{/each}}
+<h2>Total: {{total}}</h2>

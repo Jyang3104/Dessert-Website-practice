@@ -1,3 +1,5 @@
+
+
 <div id="promo">
     <img src="/img/promo.jpg" height="100%" alt="promotion">
     <h1>ENTIRE STORE 25% OFF!</h1>
@@ -7,7 +9,6 @@
 
 <div id="cat">
    <div class="box">
-
 
        {{#each categoryData}}
        <div class="cate">
@@ -33,7 +34,7 @@
 {{#each bestData}}
 <div clss="bPro">
            <div class="bestP">
-               <form action="/products" method="POST" class="bestForm">
+               <form action="/products/detail/{{this.mId}}" method="GET" class="bestForm">
                <input value="all" name="category" type="hidden">
                <button type="submit" style="border: 0; background:transparent">
                <img src="/img/{{this.pic}}" width="180vw" style="background:white" alt="{{this.title}}" />

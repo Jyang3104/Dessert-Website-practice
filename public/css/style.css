@@ -44,6 +44,7 @@ nav {
 }
 nav>a{
     margin:1.5em;
+    padding: 0.5em;
     text-decoration: none;
     font-size: 1.3em;
     font-family: "Cinzel", serif;
@@ -53,7 +54,42 @@ nav>a:hover,
 nav>a:active {
     font-weight: bold;
 }
+.dropdown{
+    margin:1.5em;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-family: "Cinzel", serif;
+    color: #fffff0;
+}
+.dropdown-content{
+    display:none;
+    position: absolute;
+    background-color: #303030;
+    text-align: center;
+    
+}
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+.dropdown #open-menu{
+    padding:0.5em;
+}
+.dropdown #open-menu:hover {
+    background-color: #303030;
+}
+.ddbtn{
+    text-decoration: none;
+    font-size: 0.9em;
+    font-family: "Cinzel", serif;
+    color: #fffff0;
+    border: none;
+    margin: 0;
+    background-color: transparent;
 
+}
+.ddbtn:hover{
+    font-weight: bolder;
+}
 #pTitle{
     font-family: "Cinzel", serif;
     position:static;
@@ -96,16 +132,21 @@ footer{
 .fd>legend{
     font-size: larger;
 }
-.fd>input{
-
+.fd>input {
     margin:0 2em;
     padding:1em;
     border: 0.5px solid rgb(48, 48, 48);
     border-radius: 2px;
-    width: 80%;
-    
+    width: 80%;   
 }
 
+.fd>select {
+    margin:0 2em;
+    padding:1em;
+    border: 0.5px solid rgb(48, 48, 48);
+    border-radius: 2px;
+    width: 85%;   
+}
 #button{
 
     display:flex;
@@ -121,6 +162,12 @@ footer{
 }
 .btn>a{
     text-decoration: none;
+}
+.ra{
+    width: 80%; 
+    margin:0;
+    padding:0;
+    text-align: center;
 }
 .err{
     color:red;
@@ -332,6 +379,24 @@ width:19.5vw;
 #user>#order{
     text-align: end;
 }
+
+.productD {
+    background: rgba(243, 243, 245, 0.9);
+    position: static;
+    width: auto;
+    margin: 5% 25%;
+    box-shadow: 3px 3px 8px #a0a1a7;
+    font-family: "Cinzel", serif;
+    font-size: 1em;
+    padding:2.5%;
+    display:grid;
+    grid-template-columns: repeat(4,1fr);  
+}
+.imgD{
+    grid-template-columns:1/2;
+}
+
+
 @media screen and (max-device-width: 800px)and (min-device-width: 500px){
      #promo>h1{ 
         font-size: 1em;
@@ -352,7 +417,13 @@ width:19.5vw;
         font-size: 0.8em; 
     }
 
-    
+    .dropdown{
+        margin:0.5em;
+        font-size: 0.8em; 
+    }
+    .ddbtn{
+        font-size: 0.5em;
+    }
     #proPage{
         display:grid;
         grid-template-columns: repeat(4,1fr);

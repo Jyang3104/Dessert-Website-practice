@@ -31,10 +31,8 @@
     <div class="pName">{{this.title}}</div>
     <div>$ {{this.price}} / {{this.unit}}</div>
     <div class="oForm">
-    <form action="/products/order" method="POST">
-    <input value="{{this.price}}" name="oPrice" type="hidden">
-    <input value="{{this.title}}" name="oName" type="hidden">
-    <input class="obtn" type="submit" value="ORDER">
+    <form action="/products/detail/{{this.mId}}" method="GET">
+    <input class="obtn" type="submit" value="DETAIL">
     </form>
     </div>
     </div>

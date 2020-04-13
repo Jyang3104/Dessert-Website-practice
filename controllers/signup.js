@@ -1,6 +1,7 @@
 const express=require('express');
 const router=express.Router();
 const cusModel=require("../model/signup");
+const orderModel=require("../model/orders");
 
  //go to signup page
  router.get("/", (req,res)=>{
@@ -72,27 +73,9 @@ router.post("/", (req,res)=>{
          err:errMessage,
          value:okValue
      })
-  }else{
-      
-      
+  }else{   
       const {fname,lname, Email, pwd}=req.body;
-      console.log(fname,lname,Email,pwd);
-        // using Twilio SendGrid's v3 Node.js Library
-        // https://github.com/sendgrid/sendgrid-nodejs
-        const sgMail = require('@sendgrid/mail');
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-        const msg = {
-        to: 'jyang219@myseneca.ca',
-        from: `${Email}`,
-        subject: 'New customer',
-        html: 
-        `<strong>Customer first name:${fname}</strong>
-        <strong>Customer last name:${lname}</strong>
-        <strong>Customer password:${pwd}</strong>
-        <strong>Email:${Email}</strong>`,
-        };
-        sgMail.send(msg)
-        .then(()=>{
+ 
             const newCustomer={
                 firstName:fname,
                 lastName:lname,
@@ -103,28 +86,26 @@ router.post("/", (req,res)=>{
          const customer = new cusModel(newCustomer);
          customer.save()
          .then(()=>{
-
-            res.render("success",{
-                title:"SUCCESS",
-                message:`${fname} ${lname} Welcome to Amami Dessert!`,
-                name: `${fname} ${lname}`  
+            
+            const newOrder={
+                customer:customer.email,
+                products:[]
+            }
+            const order=new orderModel(newOrder);
+            order.save()
+            .then(()=>{
+            req.session.userlogin=customer;           
+            res.redirect("/customer/userdashboard");
             })
+            .catch(err=>console.log(`ERR NEW ORDER: ${err}`))
+            
+
          })
-         .catch(err=>console.log(`ERROR insert DB:${err}`));     
-        })
-        .catch(err=>{
-            console.log(`ERR send email: ${err}`);
-        })    
-  }
-       
+         .catch(err=>console.log(`ERROR insert DB:${err}`));           
+           
+  }      
    })
    .catch(err=>console.log(`ERR  CK EXIST ACCOUNT ${err}`))
-
-
-/*
-    
- 
-  */
  });
 
  module.exports=router;

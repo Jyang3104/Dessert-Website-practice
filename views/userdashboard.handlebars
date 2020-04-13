@@ -1,0 +1,27 @@
+{{#if data}}
+{{#each data}}
+
+       <div class="orderDate">Order date: {{this.date}}</div>
+       <div class="orderDetail">
+              <table>
+                     <thead>
+                            <th>Item</th>
+                            <th>Price</th>
+                     </thead>
+        {{#each this.products}}
+               <h5>Item: {{this.name}}</h5>
+               <h5>Price: {{this.price}}</h5>
+          {{/each}}
+              </table>
+          </div>
+{{/each}}
+{{else}}
+       <form  id="history" action="/customer/userdashboard" method="POST">
+       <input value={{user.email}} name="email" type="hidden">
+       <input class="hisbtn" type="submit" value="ORDER HISTORY">
+       </form>
+{{/if}}
+
+
+
+

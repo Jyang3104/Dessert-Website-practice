@@ -1,19 +1,17 @@
 
-
+<h1>{{message}}</h1>
 
 
 <form class="form" action="/login" method="POST">
 <fieldset class="fd">
      <legend>Please Login</legend>
 
-
+<div class="err">{{error}}</div><br>
 <label for="Email">EMAIL</label>
-<input id="Email" name="Email" type="email" value="{{ok.email}}" placeholder="Email" >
-<div class="err">{{error.email}}</div>
+<input id="Email" name="Email" type="email"  placeholder="Email" required>
 
 <label for="pwd">PASSWORD</label>
-<input id="pwd" name="pwd" type="password" placeholder="Password" >
-<div class="err">{{error.password}}</div>
+<input id="pwd" name="pwd" type="password" placeholder="Password"  required>
 
 <div id="button">
 <input class="btn" type="submit" value="LOGIN">

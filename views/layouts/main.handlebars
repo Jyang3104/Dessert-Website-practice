@@ -22,8 +22,14 @@
           <nav>
              
                   <a href="/">HOME</a>
-                  <a href="/login">LOGIN</a>
-                  <a href="/signup">SIGNUP</a>
+                  
+
+                  {{#if user}}
+                         <a href="/logout">LOGOUT</a>
+                  {{else}}
+                        <a href="/login">LOGIN</a>
+                        <a href="/signup">SIGNUP</a>
+                  {{/if}}
                   <div class="dropdown">
                   <div id="open-menu">BROWSE</div>
                   <div class="dropdown-content">
@@ -43,17 +49,20 @@
                       <input value="icecream" name="category" type="hidden">
                       <button type="submit" class="ddbtn">ICE CREAM</button>
                       </form></p>
-                      <p><a href="/clerk/dash" class="ddbtn">CLERK</a> </p>
                   </div>
                   </div>
 
           </nav>
-          <a id="cart" href="/products/checkout">
-          <img id="cart" src="/img/cart.png" alt="cart" width="30vw"/>
-          </a>
-
           
-      </header>
+ </header>
+          <div id="userinfo">
+          <span ><a href="/customer/userdashboard">Hi, {{user.firstName}}</a></span>   
+
+          <span><a href="/products/checkout">
+          <img id="cart" src="/img/cart.png" alt="cart" />
+          </a></span> 
+          </div>
+     
 
         <main>
             {{{body}}}

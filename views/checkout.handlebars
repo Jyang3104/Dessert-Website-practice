@@ -1,10 +1,46 @@
-<h1>{{massege}}</h1>
-<h2>{{date}}</h2>
-<h2>{{customer}}: PRODUCTS IN YOUR SHOPPING CART</h2>
-{{#each products}}
-  
-<div>You ordered:{{this.name}}, and the price is ${{this.price}}</div>
-
-  
+<h1 class="cartM"> YOUR SHOPPING CART</h1>
+<h2 class="cartM">{{date}}</h2>
+<h2 class="cartM">{{massege}}</h2>
+{{#if total}}
+<div id="cartTable">
+<table>
+    <thead>
+        <th></th>
+        <th>Item</th>
+        <th>Price</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {{#each products}}
+        <tr>
+         <td><img src="/img/{{this.pic}}" width="40vw" alt="{{this.name}}" /></td>
+         <td>{{this.name}}</td>
+         <td>${{this.price}}</td>
+         <td>
+            <form method="POST" action="/customer/remove">
+            <input value="{{this.name}}" name="name" type="hidden">
+            <input value="{{this.oid}}" name="oid" type="hidden">
+            <button type="submit" class="rmbtn">REMOVE</button>
+            </form>
+         </td>
+         </tr>
 {{/each}}
-<h2>Total: {{total}}</h2>
+     <td colspan="4">Total: $ {{total}}</td>
+    </tbody>  
+</table>
+
+
+<form  class="placeO" action="/customer/placeOrder" method="POST" >
+         <input value="{{user.email}}" name="email" type="hidden">
+         <button class="placeBtn" type="submit" class="ddbtn">Place Order</button>
+         </form>
+
+</div>
+{{else}}
+<form  class="detail" action="/products/checkout" method="POST" >
+                      <input value={{user.email}} name="email" type="hidden">
+                      <button  class="detailbtn" type="submit">
+                      SEE DETAIL
+                      </button>
+                      </form>
+{{/if}}

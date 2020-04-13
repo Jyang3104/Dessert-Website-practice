@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
   customer:{type:String, required:true },
-  products: [{ name: String, price: Number}],
+  products: [{ name: String, price: Number,pic:String}],
   date: { type: Date, default: Date.now, required:true },
   isfinished:{
     type:Boolean,

@@ -1,7 +1,7 @@
 const express=require('express');
 const router=express.Router();
-const moment = require('moment')
-
+const moment = require('moment');
+const isAuth=require("../middleware/auth");
 
 //import local module
 const proModel=require("../model/product");
@@ -38,7 +38,7 @@ router.post("/", (req,res)=>{
                         price:pro.price
                     }
                 })
-                res.render("products",{
+                res.render("product/products",{
                 title:"Our Products",
                 category:req.body.category,
                 data:filterPro,
@@ -63,7 +63,7 @@ router.post("/", (req,res)=>{
                     price:pro.price
                 }
             })
-            res.render("products",{
+            res.render("product/products",{
             title:"Our Products",
             category:req.body.category,
             data:filterProC,
@@ -80,10 +80,10 @@ router.post("/", (req,res)=>{
 
 //store the customer's choice into mongoDB
 router.put("/order", (req,res)=>{
-
+    
     orderModel.findOne({
         $and:
-         [{customer:req.body.customer},
+         [{customer:req.body.email},
           {isfinished:false}]})
         .then(order=>{
         const newOrder={
@@ -91,7 +91,8 @@ router.put("/order", (req,res)=>{
         };
         newOrder.products.push({
         name : req.body.oName,
-        price : req.body.oPrice
+        price : req.body.oPrice,
+        pic  :req.body.oPic
        }) 
 
         orderModel.updateOne({_id:order._id},newOrder)
@@ -119,7 +120,7 @@ router.put("/order", (req,res)=>{
                         price:pro.price
                     }
                 })
-                res.render("products",{
+                res.render("product/products",{
                 title:"Our Products",
                 category:req.body.category,
                 data:filterPro,
@@ -144,64 +145,71 @@ router.put("/order", (req,res)=>{
       
  });
 
- //do to detail page
- router.get("/detail/:mId", (req,res)=>{
+ //go to detail page
+ router.get("/detail/:mId",isAuth, (req,res)=>{
     proModel.findById(req.params.mId)
     .then((pro)=>{
      
-        const {title,id,pic,cate,unit,best,price}=pro;
+        const {title,id,pic,cate,unit,best,price,ingredient}=pro;
 
-    res.render("detail",{
+    res.render("product/detail",{
         title,
         id,
         pic,
         cate,
         unit,
         best,
-        price
+        price,
+        ingredient
         });
     })
     .catch(err=>console.log(`ERR DETAIL: ${err}`))
  });
 
 
-
-
-
  //click cart icon 
- router.get("/checkout", (req,res)=>{
-
+ router.get("/checkout", isAuth,(req,res)=>{
+     res.render("checkout");
+ })
+ router.post("/checkout", isAuth,(req,res)=>{
+   
     orderModel.findOne({
         $and:
-         [{customer:"kishi"},
+         [{customer:req.body.email},
           {isfinished:false}]})
     .then((order)=>{
-     
-     const {customer,date,products}=order;
+     if(order==null){
+       const errMessage="No Item in your shopping cart!"
+       res.render("checkout",{
+        massege:errMessage  
+        });
+     }else{
+     const {customer,date,products,_id}=order;
      const filterPros=products.map(pro=>{
          return{
+         oid:order._id,
          name:pro.name,
-         price:pro.price
+         price:pro.price,
+         pic:pro.pic
         }
      })
      //use moment to format date, not change origin date, using in one line
-     console.log(moment(order.date).format('YYYY/MM/DD'));
+     
      let total=0.00;
      products.forEach(element => {
          total=total+element.price;
      });
      res.render("checkout",{
-         massege:"Your shopping cart!",
          customer,
+         oid:_id,
          date:moment(date).format('YYYY/MM/DD'),
          products:filterPros,
          total: Math.round(total*100)/100
      });
+    } 
     })
-    .catch(err=>console.log(`ERROR order: ${err}`))
-     
+    .catch(err=>console.log(`ERROR order: ${err}`))   
   });
 
-  
 
 module.exports=router;

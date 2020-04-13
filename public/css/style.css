@@ -18,7 +18,7 @@ header{
     padding: 0;
     top: 0;
     width: 100vw;
-    height: 20vh;
+    height: 15vh;
     background-color:#363636;
     display: flex;
     flex-direction:row;
@@ -39,11 +39,9 @@ nav {
     flex-direction:row;
     justify-content:center;
 }
-#cart{
-    margin-top: 1.2em;
-}
+
 nav>a{
-    margin:1.5em;
+    margin:0 1.5em;
     padding: 0.5em;
     text-decoration: none;
     font-size: 1.3em;
@@ -55,7 +53,7 @@ nav>a:active {
     font-weight: bold;
 }
 .dropdown{
-    margin:1.5em;
+    margin:0 1.5em;
     text-decoration: none;
     font-size: 1.3em;
     font-family: "Cinzel", serif;
@@ -90,6 +88,34 @@ nav>a:active {
 .ddbtn:hover{
     font-weight: bolder;
 }
+#userinfo{
+    position: static;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    width: 100vw;
+    height: 8vh;
+    background-color:#363636;
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;   
+}
+#cart{
+    height: 6vh;
+    width: 6vh;
+    margin: 0;
+    padding: 0;
+}
+#userinfo>span>a{
+    font-family: "Cinzel", serif;
+    text-decoration: none;
+    color: #fffff0;
+    text-align: center;
+    margin: auto;
+}
+#userinfo>span>a:hover{
+    text-decoration: underline;
+}
 #pTitle{
     font-family: "Cinzel", serif;
     position:static;
@@ -106,7 +132,7 @@ footer{
     color: #fffff0;
     position: static;
     bottom: 0;
-    
+
 }
 
 .form {
@@ -346,7 +372,7 @@ width:19.5vw;
 }
 
 .pName{
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
@@ -390,11 +416,78 @@ width:19.5vw;
     font-size: 1em;
     padding:2.5%;
     display:grid;
-    grid-template-columns: repeat(4,1fr);  
+    grid-template-columns: repeat(2,50%);  
 }
 .imgD{
-    grid-template-columns:1/2;
+    padding: 5%;
+    
 }
+.pDetail{
+    padding: 5%;
+}
+.detailbtn,.hisbtn{
+    width:14vw;
+    height:3vw;
+    margin:0 43vw;
+    border: 0.5px solid rgb(48, 48, 48);
+    border-radius: 4px;
+    font-family: "Cinzel", serif;
+    font-size: larger;
+}
+.cartM{
+    text-align: center;
+    font-size: larger;
+    font-family: "Cinzel", serif;
+    color: white;
+}
+.detail,#history{
+    height: 60vh;   
+}
+#cartTable{
+    background: rgba(243, 243, 245, 0.9);
+    position: static;
+    width: auto;
+    margin: 5% 25%;
+    box-shadow: 3px 3px 8px #a0a1a7;
+    font-family: "Cinzel", serif;
+    font-size: 1em;
+    padding:2.5%;
+}
+#cartTable>table{
+    width: 90%;
+    overflow: auto;
+    margin:auto;
+    border: 1px solid rgb(48, 48, 48);
+}
+#cartTable>table>tbody>tr>td{
+    border: 0.5px solid rgb(48, 48, 48);
+    margin:0;
+    text-align: center;
+}
+.placeBtn{
+    width:30%;
+    margin:5% 35%;
+    border: 0.5px solid rgb(48, 48, 48);
+    border-radius: 4px;
+    font-family: "Cinzel", serif;
+    font-size:1em;
+}
+
+.rmbtn{
+    color: #303030;
+    font-family: "Cinzel", serif;
+    border: 0.5px solid rgb(48, 48, 48);
+    border-radius: 1px;
+}
+.rmbtn:hover,.rmbtn:active,
+.placeBtn:hover,.placeBtn:active,
+.detailbtn:hover,.detailbtn:active,
+.hisbtn:hover,.hisbtn:active
+{
+    background-color:rgb(142, 122, 153) ;
+}
+
+
 
 
 @media screen and (max-device-width: 800px)and (min-device-width: 500px){
@@ -407,16 +500,34 @@ width:19.5vw;
     #promo>img{
         display:none;
     }
-   
+    #promo{
+        height: 20vh;
+    }
+    header{
+        height: 12vh;
+    }
+    header>img {
+        height: 50%;
+    }
     nav {
         height: 10vh; 
-        padding: 12% 0 0 0;
+        padding: 10% 0 0 0;
     }
     nav>a{
         margin:0.5em;
         font-size: 0.8em; 
     }
-
+    #userinfo{
+        height: 4vh;
+        font-size: 0.7em;
+    }
+   
+    #cart{
+        height: 3vh;
+        width: 3vh;
+        margin: 0;
+        padding: 0;
+    }
     .dropdown{
         margin:0.5em;
         font-size: 0.8em; 
@@ -461,6 +572,27 @@ width:19.5vw;
         font-size: 0.5em; 
         margin: 1%;
     }
+
+    .detailbtn,.hisbtn{
+        width:30vw;
+        height:10vw;
+        margin:0 35vw;
+        font-size:1em;
+    }
+    #cartTable{
+        width: 88%;
+        margin: 2% auto;
+        font-size: 0.7em;
+        padding:2.5%;
+    }
+    .productD { 
+        width: 80vw;  
+        margin: 5% auto;    
+        display:flex;
+        flex-direction:column;
+        text-align: center;
+    }
+    
 }
 
 

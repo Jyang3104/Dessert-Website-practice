@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt=require('bcryptjs')
+const bcrypt=require('bcryptjs');
 
 const cusSchema = new Schema({
   firstName: {type:String, required:true },
   lastName:{type:String, required:true },
   email:{type:String, required:true },
   password:{type:String, required:true },
-  user:{ type:String, default:"customer", required:true }
+  user:{ type:String, default:"c", required:true }
 });
 
 cusSchema.pre("save", function(next){

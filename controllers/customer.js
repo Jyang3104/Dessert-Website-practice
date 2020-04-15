@@ -44,7 +44,10 @@ router.post("/placeOrder", (req,res)=>{
                 from: 'jyang219@myseneca.ca',
                 subject: 'Your Order',
                 html: 
-                `<strong>Your Order:${order.products}</strong>`,
+                `<strong>Your Order:${order.products[0].name}</strong>
+                 <div>item: ${order.products[0].name}</div>
+                 <div>price: ${order.products[0].price}</div>
+                `,
                 };
                 sgMail.send(msg)
                 .then(()=>{

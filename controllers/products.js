@@ -181,7 +181,7 @@ router.put("/order", (req,res)=>{
      if(order==null){
        const errMessage="No Item in your shopping cart!"
        res.render("checkout",{
-        massege:errMessage  
+        message:errMessage  
         });
      }else{
      const {customer,date,products,_id}=order;
@@ -201,6 +201,7 @@ router.put("/order", (req,res)=>{
      });
      res.render("checkout",{
          customer,
+         message: " ",
          oid:_id,
          date:moment(date).format('YYYY/MM/DD'),
          products:filterPros,

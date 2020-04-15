@@ -90,7 +90,7 @@ nav>a:active {
 }
 #userinfo{
     position: static;
-    margin: 0;
+    margin:0 0 1% 0;
     padding: 0;
     top: 0;
     width: 100vw;
@@ -443,7 +443,7 @@ width:19.5vw;
 .detail,#history{
     height: 60vh;   
 }
-#cartTable{
+#cartTable,#clerkTable,.datelist{
     background: rgba(243, 243, 245, 0.9);
     position: static;
     width: auto;
@@ -453,13 +453,16 @@ width:19.5vw;
     font-size: 1em;
     padding:2.5%;
 }
-#cartTable>table{
+#cartTable>table,
+#clerkTable>table{
     width: 90%;
     overflow: auto;
     margin:auto;
     border: 1px solid rgb(48, 48, 48);
 }
-#cartTable>table>tbody>tr>td{
+#cartTable>table>tbody>tr>td,
+#clerkTable>table>tbody>tr>td
+{
     border: 0.5px solid rgb(48, 48, 48);
     margin:0;
     text-align: center;
@@ -487,8 +490,31 @@ width:19.5vw;
     background-color:rgb(142, 122, 153) ;
 }
 
+#addItem{
+    width:20vw;
+    height:4vw;
+    padding: 0.03em 1em;
+    margin:5vh 40vw;
+    border: 0.5px solid rgb(48, 48, 48);
+    border-radius: 4px;
+    font-family: "Cinzel", serif;
+    font-size: larger;
+    background-color: rgba(243, 243, 245, 0.9);
+    text-decoration: none;
+    color:rgb(48, 48, 48) ;
+    position: relative;
+}
+.orderDetail{
+    display:none;
+}
+.datelist>a{
+    text-decoration: none;
+}
 
-
+.datelist:active .orderDetail,
+.datelist:hover .orderDetail{
+    display:block;
+}
 
 @media screen and (max-device-width: 800px)and (min-device-width: 500px){
      #promo>h1{ 
@@ -527,6 +553,9 @@ width:19.5vw;
         width: 3vh;
         margin: 0;
         padding: 0;
+    }
+    .cateN{
+        font-size: 1em;
     }
     .dropdown{
         margin:0.5em;
@@ -579,11 +608,14 @@ width:19.5vw;
         margin:0 35vw;
         font-size:1em;
     }
-    #cartTable{
+    #cartTable,#clerkTable{
         width: 88%;
         margin: 2% auto;
         font-size: 0.7em;
         padding:2.5%;
+    }
+    #addItem{
+        margin:5vh 22vw;
     }
     .productD { 
         width: 80vw;  

@@ -1,19 +1,16 @@
 {{#if data}}
 {{#each data}}
-
-       <div class="orderDate">Order date: {{this.date}}</div>
+       <div class="datelist">
+       <a href="#" class="orderDate">Order date: {{this.date}}</a>
        <div class="orderDetail">
-              <table>
-                     <thead>
-                            <th>Item</th>
-                            <th>Price</th>
-                     </thead>
+              
         {{#each this.products}}
                <h5>Item: {{this.name}}</h5>
                <h5>Price: {{this.price}}</h5>
           {{/each}}
               </table>
           </div>
+      </div>    
 {{/each}}
 {{else}}
        <form  id="history" action="/customer/userdashboard" method="POST">

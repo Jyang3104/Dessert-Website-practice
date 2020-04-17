@@ -11,7 +11,7 @@ const cusSchema = new Schema({
 });
 
 cusSchema.pre("save", function(next){
-  bcrypt.genSalt(10)
+  bcrypt.genSalt(12)
   .then((salt)=>{
     bcrypt.hash(this.password,salt)
     .then((encrypt)=>{

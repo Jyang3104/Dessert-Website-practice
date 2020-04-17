@@ -6,11 +6,22 @@ const isAuth=require("../middleware/auth");
 const dashboardLoader=require("../middleware/authorization");
 
 router.get("/userdashboard", isAuth,dashboardLoader);
-router.post("/userdashboard", (req,res)=>{
+router.post("/userdashboard",isAuth, (req,res)=>{
      
-    orderModel.find({customer:req.body.email})
+    orderModel.find({
+        $and:
+         [{customer:req.body.email},
+          {isfinished:true}]})
     .then((orders)=>{
-       
+        orders.sort((o1,o2)=>{
+            let r;
+            if(o1>o2){
+                r=-1;
+            }else{
+                r=1;
+            }
+            return r;
+        });
         const filterOrds=orders.map(order=>{
             return{
                 date:moment(order.date).format('YYYY/MM/DD'),
@@ -26,7 +37,7 @@ router.post("/userdashboard", (req,res)=>{
 });
 
 //place order
-router.post("/placeOrder", (req,res)=>{
+router.post("/placeOrder",isAuth, (req,res)=>{
     orderModel.findOne({
         $and:
          [{customer:req.body.email},
@@ -62,7 +73,7 @@ router.post("/placeOrder", (req,res)=>{
   });
 
   //remove item from order
- router.post("/remove",(req,res)=>{
+ router.post("/remove",isAuth,(req,res)=>{
     
     orderModel.findById(req.body.oid)
      .then(order=>{

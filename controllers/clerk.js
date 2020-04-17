@@ -1,17 +1,17 @@
 const express=require('express');
 const router=express.Router();
 const path=require("path");
-
+const isAuth=require("../middleware/auth");
 
 //import local module
 const proModel=require("../model/product");
 
 
-router.get("/add",(req,res)=>{
+router.get("/add",isAuth,(req,res)=>{
     res.render("clerk/clerkAdd");
 });
 
-router.post("/add",(req,res)=>{
+router.post("/add",isAuth,(req,res)=>{
 
     const errMessage={};
     let validFlag=true;
@@ -65,7 +65,7 @@ router.post("/add",(req,res)=>{
    
 });
 
-router.get("/dash", (req,res)=>{
+router.get("/dash", isAuth,(req,res)=>{
    
     proModel.find()
     .then(prods=>{
@@ -88,7 +88,7 @@ router.get("/dash", (req,res)=>{
 });
 
 
-router.get("/edit/:id",(req,res)=>{
+router.get("/edit/:id",isAuth,(req,res)=>{
 
     proModel.findById(req.params.id)
     .then((pro)=>{
